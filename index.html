@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+<body>
+
+<div class="w-75 mx-auto my-5">
+
+    <div class="form-group">
+    <label for="ProductName">Product Name :
+    </label>
+    <input class="form-control my-2" type="text" name="" id="ProductName">
+    <small class="text-muted">Product name must be characters only</small>
+</div>
+
+<div class="form-group">
+    <label for="ProductPrice">Product Price :
+    </label>
+    <input class="form-control my-2" type="number" name="" id="ProductPrice">
+    <small class="text-muted">Product Price must be characters only</small>
+</div>
+
+<div class="form-group">
+    <label for="ProductCategory">Product Category :
+    </label>
+    <input class="form-control my-2" type="text" name="" id="ProductCategory">
+    <small class="text-muted">Product Category must be characters only</small>
+</div>
+
+<div class="form-group">
+    <label for="ProductDescription">Product Description:</label>
+    <textarea class="form-control my-2" name="ProductDescription" id="ProductDescription"></textarea>
+   <small class="text-muted">Product Description must be characters only</small>
+</div>
+
+<div class="w-75">
+<label for="">Search by product name</label>
+<input onkeyup="searchProduct(this.value)" class="form-control mx-auto " type="text" name="" id="">
+</div>
+<button id="mainBtn" onclick="addProduct()" class="btn btn-outline-info my-2">Add Product</button>
+</div> 
+<table class="table w-75 m-auto py-3">
+<thead>
+    <th>index</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Update</th>
+    <th>Delete</th>
+</thead>
+<tbody id="tableBody">
+
+</tbody>
+</table>
+<script src="JS/bootstrap.bundle.min.js"></script>
+<script src="JS/main.js"></script>
+</body>
+</html>
