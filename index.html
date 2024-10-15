@@ -10,12 +10,14 @@
 </head>
 <body>
 
-<div class="w-75 mx-auto my-5">
+<div class="w-75 mx-auto my-5 container">
 
     <div class="form-group">
     <label for="ProductName">Product Name :
     </label>
     <input class="form-control my-2" type="text" name="" id="ProductName">
+    <div id="nameValidationMsg" class="alert alert-danger d-none" role="alert">
+              </div>
     <small class="text-muted">Product name must be characters only</small>
 </div>
 
@@ -23,7 +25,9 @@
     <label for="ProductPrice">Product Price :
     </label>
     <input class="form-control my-2" type="number" name="" id="ProductPrice">
-    <small class="text-muted">Product Price must be characters only</small>
+    <div id="priceValidationMsg" class="alert alert-danger d-none" role="alert">
+              </div>
+    <small class="text-muted">Product Price must be numbers only</small>
 </div>
 
 <div class="form-group">
@@ -37,13 +41,15 @@
     <label for="ProductDescription">Product Description:</label>
     <textarea class="form-control my-2" name="ProductDescription" id="ProductDescription"></textarea>
    <small class="text-muted">Product Description must be characters only</small>
+   <br>
+   
+    <label for="">Search by product name</label>
+    <input onkeyup="searchProduct(this.value)" class="form-control mx-auto " type="text" name="" id="">
+    
 </div>
 
-<div class="w-75">
-<label for="">Search by product name</label>
-<input onkeyup="searchProduct(this.value)" class="form-control mx-auto " type="text" name="" id="">
-</div>
-<button id="mainBtn" onclick="addProduct()" class="btn btn-outline-info my-2">Add Product</button>
+
+<button id="mainBtn" onclick="addProduct()" class="btn btn-outline-info my-2" >Add Product</button>
 </div> 
 <table class="table w-75 m-auto py-3">
 <thead>

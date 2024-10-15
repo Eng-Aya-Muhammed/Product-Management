@@ -18,24 +18,28 @@ if (localStorage.getItem('ourProducts') !== null) {
 }
 
 function addProduct() {
-    var product = {
-        name: ProductNameInput.value,
-        price: ProductPriceInput.value,
-        category: ProductCategoryInput.value,
-        description: ProductDescriptionInput.value
-    };
 
-    if (currentIndex === -1) {
-        ProductContainer.push(product);
-    } else {
-        ProductContainer[currentIndex] = product;
-        currentIndex = -1; 
-        mainBtn.innerHTML = "Add Product"; 
+    if(validateProductName() && validateProductPrice()){
+        var product = {
+            name: ProductNameInput.value,
+            price: ProductPriceInput.value,
+            category: ProductCategoryInput.value,
+            description: ProductDescriptionInput.value
+        };
+    
+        if (currentIndex === -1) {
+            ProductContainer.push(product);
+        } else {
+            ProductContainer[currentIndex] = product;
+            currentIndex = -1; 
+            mainBtn.innerHTML = "Add Product"; 
+        }
+    
+        localStorage.setItem('ourProducts', JSON.stringify(ProductContainer));
+        displayProducts();
+        clearForm();
     }
-
-    localStorage.setItem('ourProducts', JSON.stringify(ProductContainer));
-    displayProducts();
-    clearForm();
+    
 }
 
 function clearForm() {
@@ -95,4 +99,29 @@ function updateProduct(index) {
 
     mainBtn.innerHTML = "Update Product";
     currentIndex = index;
+}
+
+function validateProductName(){
+    var regex = /^[A-Z][a-z]{2,5}$/;
+    if(regex.test(ProductNameInput.value)){
+        document.getElementById('nameValidationMsg').classList.add('d-none');
+        return true;
+    }
+    else{
+        document.getElementById('nameValidationMsg').innerHTML = "When entering a word, make sure it starts with an uppercase letter followed by 2 to 5 lowercase letters. If your input does not adhere to this format, a message will alert you.";
+        document.getElementById('nameValidationMsg').classList.remove('d-none');
+        return false;
+    }
+}
+
+function validateProductPrice(){
+    var regex = /^\d+(\.\d{1,2})?$/;
+    if (regex.test(ProductPriceInput.value)) {
+        document.getElementById('priceValidationMsg').classList.add('d-none');
+        return true;
+    } else {
+        document.getElementById('priceValidationMsg').innerHTML = "When entering a price, ensure it follows the format of a numerical value with up to two decimal places.";
+        document.getElementById('priceValidationMsg').classList.remove('d-none');
+        return false;
+    }
 }
